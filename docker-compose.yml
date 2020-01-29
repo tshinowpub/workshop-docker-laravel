@@ -19,12 +19,12 @@ services:
 
   laravel-db:
     container_name: laravel-db
-    image: workshop/laravel:latest
+    image: workshop/laravel-db:latest
     build:
       context: .
       dockerfile: infra/docker/db/Dockerfile
     volumes:
-      - infra/docker/persistence/db/:/var/lib/mysql
+      - ./infra/docker/persistence/db/:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: laravel_root
       MYSQL_DATABASE: laravel
@@ -37,7 +37,10 @@ services:
 
   laravel-db-manager:
     container_name: laravel-db-manager
-    image: phpmyadmin/phpmyadmin:latest
+    image: workshop/laravel-db-manager:latest
+    build:
+      context: .
+      dockerfile: infra/docker/db-manager/Dockerfile
     depends_on:
       - laravel-db
     ports:
