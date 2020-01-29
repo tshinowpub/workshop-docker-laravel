@@ -6,7 +6,7 @@ services:
     image: workshop/laravel:latest
     build:
       context: .
-      dockerfile: dockerfiles/Dockerfile
+      dockerfile: infra/docker/app/Dockerfile
     tty: true
     volumes:
       - ./:/var/www/laravel
