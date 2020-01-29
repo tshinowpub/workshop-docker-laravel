@@ -21,7 +21,8 @@ RUN yum update -y \
     php-xml \
   && yum clean all \
   && rm -rf /var/cache/yum/* \
-  && mkdir -p $CURRENT_DIR
+  && mkdir -p $CURRENT_DIR \
+  && localedef -i ja_JP -f UTF-8 ja_JP.UTF-8
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
