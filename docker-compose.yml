@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: infra/docker/db/Dockerfile
     volumes:
-      - ./persistence/db/:/var/lib/mysql
+      - infra/docker/persistence/db/:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: laravel_root
       MYSQL_DATABASE: laravel

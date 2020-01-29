@@ -1,6 +1,6 @@
 .idea/
 
-persistence/
+infra/docker/persistence/
 
 /node_modules
 /public/hot
