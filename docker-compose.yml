@@ -19,7 +19,10 @@ services:
 
   laravel-db:
     container_name: laravel-db
-    image: mysql:5.7
+    image: workshop/laravel:latest
+    build:
+      context: .
+      dockerfile: infra/docker/db/Dockerfile
     volumes:
       - ./persistence/db/:/var/lib/mysql
     environment:
@@ -33,7 +36,7 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --innodb-use-native-aio=0 --sql_mode="STRICT_TRANS_TABLES"
 
   laravel-db-manager:
-    container_name: laravel-db-admin
+    container_name: laravel-db-manager
     image: phpmyadmin/phpmyadmin:latest
     depends_on:
       - laravel-db
